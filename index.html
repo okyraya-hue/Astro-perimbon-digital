@@ -6,21 +6,13 @@
 
 <title>Astrologi & Primbon Digital</title>
 
-<!-- LOGO TITLE -->
-  <img src="logo.png"
-alt="Logo Astro Primbon"
-class="logo">
+<!-- FAVICON -->
 <link rel="icon" type="image/png" href="logo.png">
-
 <link rel="apple-touch-icon" href="logo.png">
 
 <!-- PWA -->
 <link rel="manifest" href="manifest.json">
-
 <meta name="theme-color" content="#7c3aed">
-
-<link rel="apple-touch-icon"
-href="a_logo_for_astro_primbon_digital_is_displayed_ag.png">
 
 <style>
 
@@ -57,6 +49,7 @@ margin-bottom:15px;
 box-shadow:0 0 30px rgba(168,85,247,.8);
 border:3px solid rgba(255,255,255,.2);
 animation:float 3s ease-in-out infinite;
+background:white;
 }
 
 @keyframes float{
@@ -257,7 +250,7 @@ opacity:.9;
 <header>
 
 <img
-src="a_logo_for_astro_primbon_digital_is_displayed_ag.png"
+src="logo.png"
 alt="Logo Astro Primbon"
 class="logo">
 
@@ -314,150 +307,6 @@ dan angka hoki.
 
 </section>
 
-<!-- ARTIKEL -->
-<section id="artikel">
-
-<div class="card">
-
-<h2>📖 Artikel Astrologi</h2>
-
-<div class="article">
-<h3>🌙 Pengaruh Bulan</h3>
-<p>
-Fase bulan dipercaya mempengaruhi
-emosi dan energi spiritual manusia.
-</p>
-</div>
-
-<div class="article">
-<h3>⭐ Kekuatan Rasi Bintang</h3>
-<p>
-Setiap rasi memiliki energi
-dan karakter unik.
-</p>
-</div>
-
-</div>
-
-</section>
-
-<!-- ZODIAK -->
-<section id="zodiak">
-
-<div class="card">
-
-<h2>♈ Cek Zodiak</h2>
-
-<input type="date" id="tglLahir">
-
-<button class="action-btn"
-onclick="cekZodiak()">
-
-Lihat Ramalan
-
-</button>
-
-<div class="result" id="hasilZodiak"></div>
-
-</div>
-
-</section>
-
-<!-- RASI -->
-<section id="rasi">
-
-<div class="card">
-
-<h2>🌌 Arti Rasi Bintang</h2>
-
-<input type="date" id="tglRasi">
-
-<button class="action-btn"
-onclick="cekRasi()">
-
-Lihat Rasi
-
-</button>
-
-<div class="result" id="hasilRasi"></div>
-
-</div>
-
-</section>
-
-<!-- PRIMBON -->
-<section id="primbon">
-
-<div class="card">
-
-<h2>🧿 Primbon Digital</h2>
-
-<input type="text"
-id="nama"
-placeholder="Masukkan Nama">
-
-<input type="date"
-id="tglPrimbon">
-
-<button class="action-btn"
-onclick="cekPrimbon()">
-
-Lihat Primbon
-
-</button>
-
-<div class="result"
-id="hasilPrimbon"></div>
-
-</div>
-
-<div class="card">
-
-<h2>📲 Share Website</h2>
-
-<a class="share-btn"
-href="#"
-onclick="shareWeb()">
-
-Bagikan Website
-
-</a>
-
-</div>
-
-</section>
-
-<!-- DONASI -->
-<section id="donasi">
-
-<div class="dana">
-
-<h2>💖 Donasi Pengembang</h2>
-
-<p>
-Dukung pengembangan website ini
-melalui DANA
-</p>
-
-<div class="dana-number"
-id="danaNumber">
-
-081234567890
-
-</div>
-
-<button class="copy-btn"
-onclick="copyDana()">
-
-Salin Nomor DANA
-
-</button>
-
-</div>
-
-</section>
-
-<!-- FOOTER -->
 <footer>
 
 © 2026 Astro Primbon Digital <br>
@@ -465,215 +314,9 @@ MArKie Webinger
 
 </footer>
 
-<!-- SCRIPT -->
 <script>
 
-function showPage(id){
-
-document.querySelectorAll("section")
-.forEach(sec=>{
-sec.classList.remove("active");
-});
-
-document.getElementById(id)
-.classList.add("active");
-
-}
-
-function getZodiak(day,month){
-
-if((month==1 && day>=20)||(month==2 && day<=18))
-return "Aquarius";
-
-if((month==2 && day>=19)||(month==3 && day<=20))
-return "Pisces";
-
-if((month==3 && day>=21)||(month==4 && day<=19))
-return "Aries";
-
-if((month==4 && day>=20)||(month==5 && day<=20))
-return "Taurus";
-
-if((month==5 && day>=21)||(month==6 && day<=20))
-return "Gemini";
-
-if((month==6 && day>=21)||(month==7 && day<=22))
-return "Cancer";
-
-if((month==7 && day>=23)||(month==8 && day<=22))
-return "Leo";
-
-if((month==8 && day>=23)||(month==9 && day<=22))
-return "Virgo";
-
-if((month==9 && day>=23)||(month==10 && day<=22))
-return "Libra";
-
-if((month==10 && day>=23)||(month==11 && day<=21))
-return "Scorpio";
-
-if((month==11 && day>=22)||(month==12 && day<=21))
-return "Sagitarius";
-
-return "Capricorn";
-
-}
-
-function cekZodiak(){
-
-let tgl=
-document.getElementById("tglLahir").value;
-
-if(!tgl){
-alert("Masukkan tanggal lahir");
-return;
-}
-
-let date=new Date(tgl);
-
-let d=date.getDate();
-let m=date.getMonth()+1;
-
-let z=getZodiak(d,m);
-
-document.getElementById("hasilZodiak")
-.innerHTML=
-`
-<h3>✨ Zodiak Kamu: ${z}</h3>
-
-<p><b>Karir:</b>
-Peluang besar datang dari ide kreatifmu.
-</p>
-
-<p><b>Asmara:</b>
-Hubungan akan semakin harmonis.
-</p>
-
-<p><b>Keuangan:</b>
-Ada peluang rezeki baru.
-</p>
-`;
-
-}
-
-function cekRasi(){
-
-let tgl=
-document.getElementById("tglRasi").value;
-
-if(!tgl){
-alert("Masukkan tanggal lahir");
-return;
-}
-
-let date=new Date(tgl);
-
-let d=date.getDate();
-let m=date.getMonth()+1;
-
-let z=getZodiak(d,m);
-
-document.getElementById("hasilRasi")
-.innerHTML=
-`
-<h3>🌌 ${z}</h3>
-
-<p>
-Rasi ini melambangkan energi,
-keberanian dan intuisi tinggi.
-</p>
-`;
-
-}
-
-function cekPrimbon(){
-
-let nama=
-document.getElementById("nama").value;
-
-let tgl=
-document.getElementById("tglPrimbon").value;
-
-if(nama=="" || tgl==""){
-alert("Lengkapi data");
-return;
-}
-
-let warna=[
-"Merah","Biru","Hijau","Ungu","Emas"
-];
-
-let unsur=[
-"Api","Air","Tanah","Udara"
-];
-
-let angka=
-Math.floor(Math.random()*99)+1;
-
-let warnaHoki=
-warna[Math.floor(Math.random()*warna.length)];
-
-let unsurAlam=
-unsur[Math.floor(Math.random()*unsur.length)];
-
-document.getElementById("hasilPrimbon")
-.innerHTML=
-`
-<h3>🧿 Hasil Primbon ${nama}</h3>
-
-<p><b>Weton:</b> Legi</p>
-
-<p><b>Unsur Alam:</b>
-${unsurAlam}
-</p>
-
-<p><b>Angka Keberuntungan:</b>
-${angka}
-</p>
-
-<p><b>Warna Keberuntungan:</b>
-${warnaHoki}
-</p>
-
-<p>
-<b>Sifat:</b>
-Memiliki aura positif dan mudah menarik rezeki.
-</p>
-`;
-
-}
-
-function copyDana(){
-
-let dana=
-document.getElementById("danaNumber").innerText;
-
-navigator.clipboard.writeText(dana);
-
-alert("Nomor DANA berhasil disalin");
-
-}
-
-function shareWeb(){
-
-if(navigator.share){
-
-navigator.share({
-title:"Astro Primbon Digital",
-text:"Cek ramalan astrologi di sini!",
-url:window.location.href
-});
-
-}else{
-
-alert("Browser tidak mendukung share");
-
-}
-
-}
-
 /* PWA */
-
 if ("serviceWorker" in navigator) {
 
 window.addEventListener("load", ()=>{
