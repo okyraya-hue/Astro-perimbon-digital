@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Astrologi & Primbon Digital</title>
+<title>Astro Primbon Digital</title>
 
-<!-- FAVICON -->
+<!-- ICON -->
 <link rel="icon" type="image/png" href="logo.png">
 <link rel="apple-touch-icon" href="logo.png">
 
@@ -35,51 +35,38 @@ header{
 background:linear-gradient(135deg,#7c3aed,#0ea5e9);
 padding:40px 20px;
 text-align:center;
-box-shadow:0 4px 15px rgba(0,0,0,.35);
 display:flex;
 flex-direction:column;
 align-items:center;
 justify-content:center;
+box-shadow:0 4px 15px rgba(0,0,0,.35);
 }
 
-/* LOGO */
-
 .logo{
-display:block;
 width:140px;
 height:140px;
 object-fit:cover;
 border-radius:30px;
-margin:0 auto 20px auto;
-box-shadow:0 0 35px rgba(168,85,247,.9);
-border:4px solid rgba(255,255,255,.25);
+margin-bottom:20px;
+background:white;
+border:4px solid rgba(255,255,255,.2);
+box-shadow:0 0 35px rgba(168,85,247,.8);
 animation:float 3s ease-in-out infinite;
-background:#fff;
 }
-
-/* ANIMASI */
 
 @keyframes float{
-0%{
-transform:translateY(0px);
-}
-50%{
-transform:translateY(-10px);
-}
-100%{
-transform:translateY(0px);
-}
+0%{transform:translateY(0px);}
+50%{transform:translateY(-10px);}
+100%{transform:translateY(0px);}
 }
 
 header h1{
 font-size:34px;
 margin-bottom:10px;
-color:white;
 }
 
 header p{
-opacity:.95;
-font-size:16px;
+opacity:.9;
 }
 
 /* MENU */
@@ -93,7 +80,7 @@ padding:15px;
 background:#111827;
 position:sticky;
 top:0;
-z-index:100;
+z-index:999;
 }
 
 nav button{
@@ -103,8 +90,8 @@ border-radius:12px;
 background:#1e293b;
 color:white;
 cursor:pointer;
-transition:.3s;
 font-weight:bold;
+transition:.3s;
 }
 
 nav button:hover{
@@ -115,10 +102,15 @@ transform:scale(1.05);
 /* SECTION */
 
 section{
+display:none;
 padding:25px;
 max-width:900px;
 margin:auto;
 animation:fade .5s;
+}
+
+section.active{
+display:block;
 }
 
 @keyframes fade{
@@ -147,6 +139,46 @@ margin-bottom:15px;
 color:#c084fc;
 }
 
+/* FORM */
+
+input{
+width:100%;
+padding:12px;
+margin-top:10px;
+margin-bottom:15px;
+border:none;
+border-radius:12px;
+background:#0f172a;
+color:white;
+}
+
+.action-btn{
+width:100%;
+padding:12px;
+border:none;
+border-radius:12px;
+background:linear-gradient(135deg,#7c3aed,#0ea5e9);
+color:white;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+transition:.3s;
+}
+
+.action-btn:hover{
+transform:scale(1.03);
+}
+
+/* RESULT */
+
+.result{
+margin-top:20px;
+padding:15px;
+border-radius:15px;
+background:#0f172a;
+line-height:1.8;
+}
+
 /* HERO */
 
 .hero{
@@ -162,8 +194,47 @@ color:#c084fc;
 
 .hero p{
 font-size:18px;
-opacity:.9;
 line-height:1.8;
+opacity:.9;
+}
+
+/* SHARE */
+
+.share-btn{
+display:inline-block;
+padding:12px 20px;
+background:#22c55e;
+border-radius:12px;
+color:white;
+text-decoration:none;
+font-weight:bold;
+margin-top:10px;
+}
+
+/* DONASI */
+
+.dana{
+text-align:center;
+padding:20px;
+background:#1e293b;
+border-radius:20px;
+}
+
+.dana-number{
+font-size:24px;
+font-weight:bold;
+margin:15px 0;
+color:#facc15;
+}
+
+.copy-btn{
+padding:10px 18px;
+border:none;
+border-radius:12px;
+background:#f59e0b;
+color:black;
+font-weight:bold;
+cursor:pointer;
 }
 
 /* FOOTER */
@@ -177,7 +248,7 @@ font-size:14px;
 color:#94a3b8;
 }
 
-/* RESPONSIVE */
+/* MOBILE */
 
 @media(max-width:600px){
 
@@ -222,16 +293,23 @@ Astrologi • Ramalan • Zodiak • Primbon Jawa
 
 <!-- MENU -->
 <nav>
-<button>Home</button>
-<button>Artikel</button>
-<button>Zodiak</button>
-<button>Rasi Bintang</button>
-<button>Primbon</button>
-<button>Donasi</button>
+
+<button onclick="showPage('home')">Home</button>
+
+<button onclick="showPage('artikel')">Artikel</button>
+
+<button onclick="showPage('zodiak')">Zodiak</button>
+
+<button onclick="showPage('rasi')">Rasi</button>
+
+<button onclick="showPage('primbon')">Primbon</button>
+
+<button onclick="showPage('donasi')">Donasi</button>
+
 </nav>
 
 <!-- HOME -->
-<section>
+<section id="home" class="active">
 
 <div class="hero">
 
@@ -239,9 +317,9 @@ Astrologi • Ramalan • Zodiak • Primbon Jawa
 
 <p>
 Website astrologi modern dengan fitur
-ramalan zodiak, primbon digital,
-weton kelahiran, unsur alam,
-warna keberuntungan dan angka hoki.
+ramalan zodiak, rasi bintang,
+primbon digital, weton,
+unsur alam dan keberuntungan.
 </p>
 
 </div>
@@ -252,14 +330,144 @@ warna keberuntungan dan angka hoki.
 
 <ul style="line-height:2; padding-left:20px;">
 <li>✔ Ramalan Zodiak</li>
-<li>✔ Karir & Hubungan Asmara</li>
-<li>✔ Arti Rasi Bintang</li>
-<li>✔ Primbon Digital</li>
-<li>✔ Weton & Unsur Alam</li>
+<li>✔ Karir & Asmara</li>
+<li>✔ Rasi Bintang</li>
+<li>✔ Primbon Jawa</li>
+<li>✔ Weton Kelahiran</li>
 <li>✔ Share Website</li>
 <li>✔ Donasi DANA</li>
 <li>✔ Install Jadi Aplikasi HP</li>
 </ul>
+
+</div>
+
+</section>
+
+<!-- ARTIKEL -->
+<section id="artikel">
+
+<div class="card">
+
+<h2>📖 Artikel Astrologi</h2>
+
+<p style="line-height:1.8;">
+Astrologi dipercaya mampu membaca
+karakter, energi dan keberuntungan seseorang
+melalui tanggal lahir dan rasi bintang.
+</p>
+
+</div>
+
+</section>
+
+<!-- ZODIAK -->
+<section id="zodiak">
+
+<div class="card">
+
+<h2>♈ Ramalan Zodiak</h2>
+
+<input type="date" id="tglLahir">
+
+<button class="action-btn"
+onclick="cekZodiak()">
+
+Lihat Ramalan
+
+</button>
+
+<div class="result" id="hasilZodiak"></div>
+
+</div>
+
+</section>
+
+<!-- RASI -->
+<section id="rasi">
+
+<div class="card">
+
+<h2>🌌 Arti Rasi Bintang</h2>
+
+<input type="date" id="tglRasi">
+
+<button class="action-btn"
+onclick="cekRasi()">
+
+Lihat Rasi
+
+</button>
+
+<div class="result" id="hasilRasi"></div>
+
+</div>
+
+</section>
+
+<!-- PRIMBON -->
+<section id="primbon">
+
+<div class="card">
+
+<h2>🧿 Primbon Digital</h2>
+
+<input type="text"
+id="nama"
+placeholder="Masukkan Nama">
+
+<input type="date"
+id="tglPrimbon">
+
+<button class="action-btn"
+onclick="cekPrimbon()">
+
+Lihat Primbon
+
+</button>
+
+<div class="result"
+id="hasilPrimbon"></div>
+
+</div>
+
+<div class="card">
+
+<h2>📲 Share Website</h2>
+
+<a href="#"
+class="share-btn"
+onclick="shareWeb()">
+
+Bagikan Website
+
+</a>
+
+</div>
+
+</section>
+
+<!-- DONASI -->
+<section id="donasi">
+
+<div class="dana">
+
+<h2>💖 Donasi Pengembang</h2>
+
+<p>Dukung pengembangan website ini melalui DANA</p>
+
+<div class="dana-number"
+id="danaNumber">
+
+0895-1323-7203
+
+</div>
+
+<button class="copy-btn"
+onclick="copyDana()">
+
+Salin Nomor DANA
+
+</button>
 
 </div>
 
@@ -273,8 +481,226 @@ MArKie Webinger
 
 </footer>
 
-<!-- PWA -->
+<!-- SCRIPT -->
 <script>
+
+/* NAVIGATION */
+
+function showPage(id){
+
+document.querySelectorAll("section")
+.forEach(section=>{
+section.classList.remove("active");
+});
+
+document.getElementById(id)
+.classList.add("active");
+
+}
+
+/* ZODIAK */
+
+function getZodiak(day,month){
+
+if((month==1&&day>=20)||(month==2&&day<=18))
+return "Aquarius";
+
+if((month==2&&day>=19)||(month==3&&day<=20))
+return "Pisces";
+
+if((month==3&&day>=21)||(month==4&&day<=19))
+return "Aries";
+
+if((month==4&&day>=20)||(month==5&&day<=20))
+return "Taurus";
+
+if((month==5&&day>=21)||(month==6&&day<=20))
+return "Gemini";
+
+if((month==6&&day>=21)||(month==7&&day<=22))
+return "Cancer";
+
+if((month==7&&day>=23)||(month==8&&day<=22))
+return "Leo";
+
+if((month==8&&day>=23)||(month==9&&day<=22))
+return "Virgo";
+
+if((month==9&&day>=23)||(month==10&&day<=22))
+return "Libra";
+
+if((month==10&&day>=23)||(month==11&&day<=21))
+return "Scorpio";
+
+if((month==11&&day>=22)||(month==12&&day<=21))
+return "Sagitarius";
+
+return "Capricorn";
+
+}
+
+function cekZodiak(){
+
+let tgl=
+document.getElementById("tglLahir").value;
+
+if(!tgl){
+alert("Masukkan tanggal lahir");
+return;
+}
+
+let date=new Date(tgl);
+
+let d=date.getDate();
+let m=date.getMonth()+1;
+
+let z=getZodiak(d,m);
+
+document.getElementById("hasilZodiak")
+.innerHTML=
+`
+<h3>✨ ${z}</h3>
+
+<p><b>Karir:</b>
+Peluang besar datang dari kreativitasmu.
+</p>
+
+<p><b>Asmara:</b>
+Hubungan semakin harmonis.
+</p>
+
+<p><b>Keuangan:</b>
+Ada peluang rezeki baru.
+</p>
+`;
+
+}
+
+/* RASI */
+
+function cekRasi(){
+
+let tgl=
+document.getElementById("tglRasi").value;
+
+if(!tgl){
+alert("Masukkan tanggal lahir");
+return;
+}
+
+let date=new Date(tgl);
+
+let d=date.getDate();
+let m=date.getMonth()+1;
+
+let z=getZodiak(d,m);
+
+document.getElementById("hasilRasi")
+.innerHTML=
+`
+<h3>🌌 ${z}</h3>
+
+<p>
+Rasi ini melambangkan energi,
+keberanian dan intuisi tinggi.
+</p>
+`;
+
+}
+
+/* PRIMBON */
+
+function cekPrimbon(){
+
+let nama=
+document.getElementById("nama").value;
+
+let tgl=
+document.getElementById("tglPrimbon").value;
+
+if(nama==""||tgl==""){
+alert("Lengkapi data");
+return;
+}
+
+let warna=[
+"Merah","Biru","Hijau","Ungu","Emas"
+];
+
+let unsur=[
+"Api","Air","Tanah","Udara"
+];
+
+let angka=
+Math.floor(Math.random()*99)+1;
+
+let warnaHoki=
+warna[Math.floor(Math.random()*warna.length)];
+
+let unsurAlam=
+unsur[Math.floor(Math.random()*unsur.length)];
+
+document.getElementById("hasilPrimbon")
+.innerHTML=
+`
+<h3>🧿 Hasil Primbon ${nama}</h3>
+
+<p><b>Weton:</b> Legi</p>
+
+<p><b>Unsur Alam:</b>
+${unsurAlam}
+</p>
+
+<p><b>Angka Keberuntungan:</b>
+${angka}
+</p>
+
+<p><b>Warna Keberuntungan:</b>
+${warnaHoki}
+</p>
+
+<p>
+<b>Sifat:</b>
+Memiliki aura positif dan mudah menarik rezeki.
+</p>
+`;
+
+}
+
+/* COPY DANA */
+
+function copyDana(){
+
+let dana=
+document.getElementById("danaNumber").innerText;
+
+navigator.clipboard.writeText(dana);
+
+alert("Nomor DANA berhasil disalin");
+
+}
+
+/* SHARE */
+
+function shareWeb(){
+
+if(navigator.share){
+
+navigator.share({
+title:"Astro Primbon Digital",
+text:"Cek ramalan astrologi di sini!",
+url:window.location.href
+});
+
+}else{
+
+alert("Browser tidak mendukung share");
+
+}
+
+}
+
+/* PWA */
 
 if ("serviceWorker" in navigator) {
 
