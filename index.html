@@ -150,6 +150,7 @@ border:none;
 border-radius:12px;
 background:#0f172a;
 color:white;
+font-size:16px;
 }
 
 .action-btn{
@@ -367,7 +368,10 @@ melalui tanggal lahir dan rasi bintang.
 
 <h2>♈ Ramalan Zodiak</h2>
 
-<input type="date" id="tglLahir">
+<input
+type="text"
+id="tglLahir"
+placeholder="Contoh: 21-03-2001">
 
 <button class="action-btn"
 onclick="cekZodiak()">
@@ -389,7 +393,10 @@ Lihat Ramalan
 
 <h2>🌌 Arti Rasi Bintang</h2>
 
-<input type="date" id="tglRasi">
+<input
+type="text"
+id="tglRasi"
+placeholder="Contoh: 21-03-2001">
 
 <button class="action-btn"
 onclick="cekRasi()">
@@ -411,12 +418,15 @@ Lihat Rasi
 
 <h2>🧿 Primbon Digital</h2>
 
-<input type="text"
+<input
+type="text"
 id="nama"
 placeholder="Masukkan Nama">
 
-<input type="date"
-id="tglPrimbon">
+<input
+type="text"
+id="tglPrimbon"
+placeholder="Contoh: 21-03-2001">
 
 <button class="action-btn"
 onclick="cekPrimbon()">
@@ -498,6 +508,37 @@ document.getElementById(id)
 
 }
 
+/* AMBIL TANGGAL MANUAL */
+
+function ambilTanggal(inputId){
+
+let tgl =
+document.getElementById(inputId).value;
+
+if(!tgl.includes("-")){
+alert("Gunakan format: tanggal-bulan-tahun");
+return null;
+}
+
+let pecah = tgl.split("-");
+
+let day = parseInt(pecah[0]);
+let month = parseInt(pecah[1]);
+let year = parseInt(pecah[2]);
+
+if(isNaN(day)||isNaN(month)||isNaN(year)){
+alert("Tanggal tidak valid");
+return null;
+}
+
+return {
+day,
+month,
+year
+};
+
+}
+
 /* ZODIAK */
 
 function getZodiak(day,month){
@@ -539,22 +580,15 @@ return "Capricorn";
 
 }
 
+/* CEK ZODIAK */
+
 function cekZodiak(){
 
-let tgl=
-document.getElementById("tglLahir").value;
+let data = ambilTanggal("tglLahir");
 
-if(!tgl){
-alert("Masukkan tanggal lahir");
-return;
-}
+if(!data) return;
 
-let date=new Date(tgl);
-
-let d=date.getDate();
-let m=date.getMonth()+1;
-
-let z=getZodiak(d,m);
+let z = getZodiak(data.day,data.month);
 
 document.getElementById("hasilZodiak")
 .innerHTML=
@@ -576,24 +610,15 @@ Ada peluang rezeki baru.
 
 }
 
-/* RASI */
+/* CEK RASI */
 
 function cekRasi(){
 
-let tgl=
-document.getElementById("tglRasi").value;
+let data = ambilTanggal("tglRasi");
 
-if(!tgl){
-alert("Masukkan tanggal lahir");
-return;
-}
+if(!data) return;
 
-let date=new Date(tgl);
-
-let d=date.getDate();
-let m=date.getMonth()+1;
-
-let z=getZodiak(d,m);
+let z = getZodiak(data.day,data.month);
 
 document.getElementById("hasilRasi")
 .innerHTML=
@@ -608,17 +633,17 @@ keberanian dan intuisi tinggi.
 
 }
 
-/* PRIMBON */
+/* CEK PRIMBON */
 
 function cekPrimbon(){
 
 let nama=
 document.getElementById("nama").value;
 
-let tgl=
-document.getElementById("tglPrimbon").value;
+let data=
+ambilTanggal("tglPrimbon");
 
-if(nama==""||tgl==""){
+if(nama==""||!data){
 alert("Lengkapi data");
 return;
 }
